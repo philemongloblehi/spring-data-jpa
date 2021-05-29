@@ -1,4 +1,4 @@
-# Spring Security Example
+# Spring Dta JPA Example
 
 Sample project demonstrating configuration and usage of Spring Data JPA framework
 
