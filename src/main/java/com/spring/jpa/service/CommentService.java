@@ -33,4 +33,12 @@ public class CommentService {
     public Comment addComment(Comment comment) {
         return this.commentRepository.save(comment);
     }
+
+    public void removeComment(Comment comment) {
+        this.commentRepository.delete(comment);
+    }
+
+    public void removeCommentById(Integer id) {
+        this.commentRepository.deleteById(id);
+    }
 }
