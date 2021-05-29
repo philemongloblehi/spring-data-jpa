@@ -1,4 +1,4 @@
-# Spring Dta JPA Example
+# Spring Data JPA Example
 
 Sample project demonstrating configuration and usage of Spring Data JPA framework
 
@@ -12,5 +12,5 @@ Sample project demonstrating configuration and usage of Spring Data JPA framewor
 - Spring Data JPA
 - ORM Framework
 - @ManyToMany / @OneToMany / @ManyToOne
-- UniDirectional / Bidirectional
+- UniDirectional / Bidirectional relational
 - JPQL Query / Native Query / Delivery Query
