@@ -1,6 +1,8 @@
 package com.spring.jpa.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Philémon Globléhi <philemon.globlehi@gmail.com>
@@ -19,6 +21,19 @@ public class Product {
 
     @Column(name = "cout")
     private int cost;
+
+    @OneToMany(
+            mappedBy = "product",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private final List<Comment> comments = new ArrayList<>();
+
+    @ManyToMany(
+            mappedBy = "products",
+            cascade = CascadeType.ALL
+    )
+    private final List<Category> categories = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -43,4 +58,23 @@ public class Product {
     public void setCost(int cost) {
         this.cost = cost;
     }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
+        comment.setProduct(this);
+    }
+
+    public void removeComment(Comment comment) {
+        comments.remove(comment);
+        comment.setProduct(null);
+    }
+
 }

@@ -17,6 +17,12 @@ public class Comment {
     @Column(name="contenu")
     private String content;
 
+    @ManyToOne(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(name = "produit_id")
+    private Product product;
+
     public int getId() {
         return id;
     }
@@ -31,5 +37,13 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

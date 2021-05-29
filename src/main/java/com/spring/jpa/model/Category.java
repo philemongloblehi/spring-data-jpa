@@ -1,6 +1,8 @@
 package com.spring.jpa.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Philémon Globléhi <philemon.globlehi@gmail.com>
@@ -17,6 +19,20 @@ public class Category {
     @Column(name="nom")
     private String name;
 
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }
+    )
+    @JoinTable(
+            name = "categorie_produit",
+            joinColumns = @JoinColumn(name = "categorie_id"),
+            inverseJoinColumns = @JoinColumn(name = "produit_id")
+    )
+    private final List<Product> products = new ArrayList<>();
+
     public int getId() {
         return id;
     }
@@ -32,4 +48,19 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void addProduct(Product product) {
+        products.add(product);
+        product.getCategories().add(this);
+    }
+
+    public void removeProduit(Product product) {
+        products.remove(product);
+        product.getCategories().remove(this);
+    }
+
 }
