@@ -3,10 +3,7 @@ package com.spring.jpa.controller;
 import com.spring.jpa.model.Comment;
 import com.spring.jpa.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -31,5 +28,10 @@ public class CommentController {
     @GetMapping(path = "/{id}", name = "details")
     public Optional<Comment> show(@PathVariable int id) {
         return this.commentService.getCommentById(id);
+    }
+
+    @PostMapping(name = "add")
+    public Comment save(@RequestBody Comment comment) {
+        return this.commentService.addComment(comment);
     }
 }

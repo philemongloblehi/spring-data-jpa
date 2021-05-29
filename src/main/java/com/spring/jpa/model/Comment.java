@@ -1,5 +1,7 @@
 package com.spring.jpa.model;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 
 /**
@@ -7,6 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "commentaire")
+@DynamicUpdate
 public class Comment {
 
     @Id

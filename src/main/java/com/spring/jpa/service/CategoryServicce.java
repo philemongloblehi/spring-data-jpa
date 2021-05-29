@@ -29,4 +29,8 @@ public class CategoryServicce {
     public Optional<Category> getCategoryById(Integer id) {
         return this.categoryRepository.findById(id);
     }
+
+    public Category addCategory(Category category) {
+        return this.categoryRepository.save(category);
+    }
 }

@@ -26,4 +26,8 @@ public class ProductService {
     public Optional<Product> getProductById(Integer id) {
         return this.productRepository.findById(id);
     }
+
+    public Product addProduct(Product product) {
+        return this.productRepository.save(product);
+    }
 }
